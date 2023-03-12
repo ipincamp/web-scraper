@@ -1,0 +1,16 @@
+{
+  "env": {
+    "es2021": true,
+    "node": true
+  },
+  "extends": "standard-with-typescript",
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "project": ["**/tsconfig.json"],
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint"],
+  "ignorePatterns": ["**/build/*", "**/node_modules/*", "**/public/*", "**/tsconfig.json"],
+  "rules": {}
+}
