@@ -6,7 +6,7 @@ const decodeSnap = require("../functions/decodeSnap");
 /**
  *
  * @param {string} url TikTok URL
- * @returns {string}
+ * @returns {Promise<string>}
  */
 const snaptik = async (url) => {
   try {

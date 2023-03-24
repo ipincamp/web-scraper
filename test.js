@@ -1,4 +1,4 @@
-const { snaptik, snapinsta, savefrom } = require(".");
+const { savefrom, snapinsta, snapsave, snaptik } = require(".");
 
 (async () => {
   const tiktok = await snaptik(
@@ -13,4 +13,7 @@ const { snaptik, snapinsta, savefrom } = require(".");
     "https://www.instagram.com/reel/CqIWB6LA8BS/?igshid=YmMyMTA2M2Y="
   );
   console.info(instagram);
+
+  const facebook = await snapsave("https://fb.watch/jtgwcUWL68/");
+  console.info(facebook);
 })();

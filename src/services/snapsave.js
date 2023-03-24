@@ -4,23 +4,21 @@ const decodeSnap = require("../functions/decodeSnap");
 
 /**
  *
- * @param {string} url Instagram URL
+ * @param {string} url Facebook URL
  * @returns {Promise<string>}
  */
-const snapinsta = async (url) => {
+const snapsave = async (url) => {
   try {
     const data = new FormData();
     data.append("url", url);
-    data.append("action", "post");
-    data.append("lang", "id");
     const request = await axios({
       method: "POST",
-      url: "https://snapinsta.app/action.php",
       data,
+      url: "https://snapsave.app/action.php?lang=id",
       headers: {
         "Content-Type": `multipart/form-data; boundary=${data.getBoundary()}`,
-        Origin: "https://snapinsta.app",
-        Referer: "https://snapinsta.app/id",
+        Origin: "https://snapsave.app",
+        Referer: "https://snapsave.app/id",
         "User-Agent": "Chrome",
       },
     });
@@ -44,4 +42,4 @@ const snapinsta = async (url) => {
   }
 };
 
-module.exports = snapinsta;
+module.exports = snapsave;

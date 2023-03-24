@@ -4,7 +4,7 @@ const vm = require("vm");
 /**
  *
  * @param {string} url
- * @returns {string}
+ * @returns {Promise<string>}
  */
 const savefrom = async (url) => {
   try {
