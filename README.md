@@ -5,7 +5,7 @@ Web Scraper with NodeJS.
 ## To-Do
 
 - [x] savefrom
-- [ ] snapinsta
+- [x] snapinsta
 - [ ] snapsave
 - [x] snaptik
 - [ ] ssstwitter
@@ -16,11 +16,13 @@ Web Scraper with NodeJS.
 > CommonJS
 
 ```javascript
-const { savefrom, snaptik } = require("scraper");
+// example
+const { savefrom } = require("scraper");
 ```
 
 > Module
 
 ```javascript
-import { savefrom, snaptik } from "scraper";
+// example
+import { savefrom } from "scraper";
 ```
