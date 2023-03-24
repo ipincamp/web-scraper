@@ -6,7 +6,7 @@ Web Scraper with NodeJS.
 
 - [x] savefrom
 - [x] snapinsta
-- [ ] snapsave
+- [x] snapsave
 - [x] snaptik
 - [ ] ssstwitter
 - [ ] y2mate
