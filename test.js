@@ -1,4 +1,4 @@
-const { savefrom, snapinsta, snapsave, snaptik } = require(".");
+const { savefrom, snapinsta, snapsave, snaptik, musicaldown } = require(".");
 
 (async () => {
   const tiktok = await snaptik(
@@ -16,4 +16,10 @@ const { savefrom, snapinsta, snapsave, snaptik } = require(".");
 
   const facebook = await snapsave("https://fb.watch/jtgwcUWL68/");
   console.info(facebook);
+
+  const tiktokv = await musicaldown(
+    "https://www.tiktok.com/@initokyolagii/video/7189917930761506075",
+    false // set 'true' if you want to get music too
+  );
+  console.info(tiktokv);
 })();
