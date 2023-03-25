@@ -1,4 +1,11 @@
-const { savefrom, snapinsta, snapsave, snaptik, musicaldown } = require(".");
+const {
+  savefrom,
+  snapinsta,
+  snapsave,
+  snaptik,
+  musicaldown,
+  snaptwitter,
+} = require(".");
 
 (async () => {
   const tiktok = await snaptik(
@@ -22,4 +29,9 @@ const { savefrom, snapinsta, snapsave, snaptik, musicaldown } = require(".");
     false // set 'true' if you want to get music too
   );
   console.info(tiktokv);
+
+  const twitter = await snaptwitter(
+    "https://twitter.com/sarahlou_7491/status/1638442355920347138?s=20"
+  );
+  console.info(twitter);
 })();
