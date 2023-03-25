@@ -5,18 +5,16 @@ Web Scraper with NodeJS.
 ## To-Do
 
 - [ ] igram
-- [x] musicaldown v
-- [x] savefrom v
-- [x] snapinsta v
-- [x] snapsave v
+- [x] musicaldown
+- [x] savefrom
+- [x] snapinsta
+- [x] snapsave
 - [x] snaptik v
-- [ ] snaptwiter
+- [x] snaptwiter
 - [ ] sssinstagram
 - [ ] ssstik
-- [ ] ssstwitter
 - [ ] tikdown
 - [ ] ttdownloader
-- [ ] twitload
 - [ ] twittervideodownloader
 - [ ] y2mate
 
