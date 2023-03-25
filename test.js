@@ -5,6 +5,7 @@ const {
   snaptik,
   musicaldown,
   snaptwitter,
+  ttdownloader,
 } = require(".");
 
 (async () => {
@@ -34,4 +35,9 @@ const {
     "https://twitter.com/sarahlou_7491/status/1638442355920347138?s=20"
   );
   console.info(twitter);
+
+  const tiktokdl = await ttdownloader(
+    "https://www.tiktok.com/@initokyolagii/video/7189917930761506075"
+  );
+  console.info(tiktokdl);
 })();

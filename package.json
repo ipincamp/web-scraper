@@ -1,6 +1,6 @@
 {
   "name": "scraper",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Web Scraper with NodeJS.",
   "private": true,
   "author": "ipinID",

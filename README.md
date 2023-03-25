@@ -9,12 +9,12 @@ Web Scraper with NodeJS.
 - [x] savefrom
 - [x] snapinsta
 - [x] snapsave
-- [x] snaptik v
+- [x] snaptik
 - [x] snaptwiter
 - [ ] sssinstagram
 - [ ] ssstik
 - [ ] tikdown
-- [ ] ttdownloader
+- [x] ttdownloader
 - [ ] twittervideodownloader
 - [ ] y2mate
 

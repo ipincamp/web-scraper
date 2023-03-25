@@ -4,6 +4,7 @@ const snapinsta = require("./src/services/snapinsta");
 const snapsave = require("./src/services/snapsave");
 const snaptik = require("./src/services/snaptik");
 const snaptwitter = require("./src/services/snaptwitter");
+const ttdownloader = require("./src/services/ttdownloader");
 
 module.exports = {
   musicaldown,
@@ -12,4 +13,5 @@ module.exports = {
   snapsave,
   snaptik,
   snaptwitter,
+  ttdownloader,
 };
