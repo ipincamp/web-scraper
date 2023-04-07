@@ -1,7 +1,5 @@
-const { default: axios } = require("axios");
-const cheerio = require("cheerio");
-const FormData = require("form-data");
-const decodeSnap = require("../functions/decodeSnap");
+const { axios, cheerio, FormData } = require("../utils/dependencies");
+const { decode } = require("../class/Snap");
 
 /**
  *
@@ -37,20 +35,7 @@ const snaptik = async (url) => {
       },
     });
 
-    const script = postDataResponse.data;
-    const scriptPassCheck = /\}eval\(function/g.exec(script);
-    if (!scriptPassCheck) {
-      throw new Error("[404] Could not find executable script.");
-    }
-
-    const scriptParams = /escape\(r\)\)\}\((.*?)\)\)/
-      .exec(script)[1]
-      .split(",")
-      .map((v) => (v.includes('"') ? v.slice(1, -1) : parseInt(v)));
-
-    const [h, u, n, t, e, r] = scriptParams;
-    const decodedSnap = decodeSnap(h, u, n, t, e, r);
-    return decodedSnap;
+    return decode(postDataResponse.data);
   } catch (error) {
     throw error;
   }

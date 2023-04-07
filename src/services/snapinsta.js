@@ -1,6 +1,5 @@
-const { default: axios } = require("axios");
-const FormData = require("form-data");
-const decodeSnap = require("../functions/decodeSnap");
+const { axios, FormData } = require("../utils/dependencies");
+const { decode } = require("../class/Snap");
 
 /**
  *
@@ -10,12 +9,14 @@ const decodeSnap = require("../functions/decodeSnap");
 const snapinsta = async (url) => {
   try {
     const data = new FormData();
+
     data.append("url", url);
     data.append("action", "post");
     data.append("lang", "id");
+
     const request = await axios({
       method: "POST",
-      url: "https://snapinsta.app/action.php",
+      url: "https://snapinsta.app/action2.php",
       data,
       headers: {
         "Content-Type": `multipart/form-data; boundary=${data.getBoundary()}`,
@@ -25,20 +26,7 @@ const snapinsta = async (url) => {
       },
     });
 
-    const script = request.data;
-    const scriptPassCheck = /\}eval\(function/g.exec(script);
-    if (!scriptPassCheck) {
-      throw new Error("[404] Could not find executable script.");
-    }
-
-    const scriptParams = /escape\(r\)\)\}\((.*?)\)\)/
-      .exec(script)[1]
-      .split(",")
-      .map((v) => (v.includes('"') ? v.slice(1, -1) : parseInt(v)));
-
-    const [h, u, n, t, e, r] = scriptParams;
-    const decodedSnap = decodeSnap(h, u, n, t, e, r);
-    return decodedSnap;
+    return decode(request.data);
   } catch (error) {
     throw error;
   }
