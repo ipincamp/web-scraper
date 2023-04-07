@@ -4,7 +4,8 @@ Web Scraper with NodeJS.
 
 ## To-Do
 
-- [ ] igram
+> Downloaders
+
 - [x] musicaldown
 - [x] savefrom
 - [x] snapinsta
@@ -13,9 +14,9 @@ Web Scraper with NodeJS.
 - [x] snaptwiter
 - [ ] sssinstagram
 - [ ] ssstik
-- [ ] tikdown
+- [x] tikdown
 - [x] ttdownloader
-- [ ] twittervideodownloader
+- [x] twittervideodownloader
 - [ ] y2mate
 
 ## How To Use
