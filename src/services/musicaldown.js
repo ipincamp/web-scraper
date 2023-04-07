@@ -1,5 +1,4 @@
-const { default: axios } = require("axios");
-const cheerio = require("cheerio");
+const { axios, cheerio } = require("../utils/dependencies");
 
 /**
  *

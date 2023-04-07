@@ -1,6 +1,4 @@
-const { default: axios } = require("axios");
-const cheerio = require("cheerio");
-const FormData = require("form-data");
+const { axios, cheerio, FormData } = require("../utils/dependencies");
 
 /**
  *

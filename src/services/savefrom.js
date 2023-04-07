@@ -1,5 +1,4 @@
-const { default: axios } = require("axios");
-const vm = require("vm");
+const { axios, vm } = require("../utils/dependencies");
 
 /**
  *
