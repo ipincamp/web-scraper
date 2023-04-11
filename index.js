@@ -1,3 +1,4 @@
+const movieku = require("./src/services/movieku");
 const musicaldown = require("./src/services/musicaldown");
 const savefrom = require("./src/services/savefrom");
 const snapinsta = require("./src/services/snapinsta");
@@ -9,6 +10,7 @@ const ttdownloader = require("./src/services/ttdownloader");
 const twittervdl = require("./src/services/twittervideodownloader");
 
 module.exports = {
+  movieku,
   musicaldown,
   savefrom,
   snapinsta,
