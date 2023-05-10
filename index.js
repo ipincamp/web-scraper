@@ -8,6 +8,7 @@ const snaptwitter = require("./src/services/snaptwitter");
 const tikdown = require("./src/services/tikdown");
 const ttdownloader = require("./src/services/ttdownloader");
 const twittervdl = require("./src/services/twittervideodownloader");
+const snaptik_wrap = require("./src/wrappers/snaptik");
 
 module.exports = {
   movieku,
@@ -20,4 +21,5 @@ module.exports = {
   tikdown,
   ttdownloader,
   twittervdl,
+  snaptik_wrap,
 };
