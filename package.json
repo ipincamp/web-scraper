@@ -1,6 +1,6 @@
 {
   "name": "@ipincamp/scraper",
-  "version": "1.0.1",
+  "version": "1.0.12",
   "description": "Web Scraper",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
