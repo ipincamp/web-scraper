@@ -7,17 +7,17 @@ Web Scraper with NodeJS.
 > Downloaders
 
 - [x] musicaldown
-- [x] savefrom
+- [ ] savefrom
 - [x] snapinsta
 - [x] snapsave
 - [x] snaptik
 - [x] snaptwiter
 - [ ] sssinstagram
-- [ ] ssstik
+- [x] ssstik
 - [x] tikdown
-- [x] ttdownloader
-- [x] twittervideodownloader
-- [ ] y2mate
+- [ ] ttdownloader
+- [ ] twittervideodownloader
+- [x] y2mate
 
 > Movie
 
@@ -29,12 +29,12 @@ Web Scraper with NodeJS.
 
 ```javascript
 // example
-const { savefrom } = require("scraper");
+const scraper = require("scraper");
 ```
 
 > Module
 
 ```javascript
 // example
-import { savefrom } from "scraper";
+import scraper from "scraper";
 ```
