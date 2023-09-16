@@ -8,6 +8,7 @@ Web Scraper with NodeJS.
 
 - [x] musicaldown
 - [ ] savefrom
+- [x] saveig
 - [x] snapinsta
 - [x] snapsave
 - [x] snaptik
@@ -29,12 +30,16 @@ Web Scraper with NodeJS.
 
 ```javascript
 // example
-const scraper = require("scraper");
+const scraper = require("web-scraper");
 ```
 
 > Module
 
 ```javascript
 // example
-import scraper from "scraper";
+import scraper from "web-scraper";
 ```
+
+## Notes
+
+This package is only to get the raw scrape, you have to parse it yourself because each service can change at any time.
