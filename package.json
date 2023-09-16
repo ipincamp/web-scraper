@@ -1,6 +1,6 @@
 {
   "name": "@ipincamp/web-scraper",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "Simple and lightweight web scraper. Works well in 2023!",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
