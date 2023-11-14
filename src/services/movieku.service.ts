@@ -2,7 +2,6 @@ import axios from 'axios';
 import { load } from 'cheerio';
 import { Agent } from 'https';
 import globalVariables from '../utils/globalVariables';
-import requestStatus from '../utils/requestStatus';
 import {
   type IFilter,
   type ISeriesList,
@@ -22,9 +21,8 @@ const seriesList = async (): Promise<ISeriesList[]> => {
       httpsAgent: new Agent({ rejectUnauthorized: false }),
     });
 
-    const isRequestListSuccess = requestStatus(requestList);
-    if (!isRequestListSuccess) {
-      throw new Error('Failed to get lists');
+    if (requestList.status !== 200) {
+      throw new Error("Failed to get lists")
     }
 
     const $ = load(requestList.data);
@@ -67,9 +65,8 @@ const onGoing = async (): Promise<ITVSeries[]> => {
       httpsAgent: new Agent({ rejectUnauthorized: false }),
     });
 
-    const isRequestListSuccess = requestStatus(requestList);
-    if (!isRequestListSuccess) {
-      throw new Error('Failed to get lists');
+    if (requestList.status !== 200) {
+      throw new Error("Failed to get lists")
     }
 
     const $ = load(requestList.data);
@@ -105,9 +102,8 @@ const advancedSearch = async (): Promise<Record<string, IFilter[]>> => {
       httpsAgent: new Agent({ rejectUnauthorized: false }),
     });
 
-    const isRequestFilterListSuccess = requestStatus(response);
-    if (!isRequestFilterListSuccess) {
-      throw new Error('Failed to get lists');
+    if (response.status !== 200) {
+      throw new Error("Failed to get lists")
     }
 
     const html = (await response.data) as string;

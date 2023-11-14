@@ -1,8 +1,7 @@
 import axios from 'axios';
 import FormData from 'form-data';
-import SnapClass from '../classes/Snap.class';
-import requestStatus from '../utils/requestStatus';
 import globalVariables from '../utils/globalVariables';
+import decodeSnap from '../utils/decodeSnap';
 
 export default async (inputUrl: string): Promise<string> => {
   try {
@@ -22,13 +21,37 @@ export default async (inputUrl: string): Promise<string> => {
       },
     });
 
-    const isRequestScriptSuccess = requestStatus(requestScript);
-    if (!isRequestScriptSuccess) {
+    if (requestScript.status !== 200) {
       throw new Error('Failed to get the script');
     }
 
-    // decode script
-    return SnapClass.decode(requestScript.data as string);
+    // TODO: get params
+    const params = `${requestScript.data}`.match(/escape\(r\)\)}\((.*?)\)\)/)
+
+    // validate params
+    if (params === null) {
+      throw new Error("Failed to get video params")
+    }
+
+    // split params
+    const args = params[1]
+      .split(',')
+      .map(a => a.startsWith('"') && a.endsWith('"') ? a.slice(1, -1) : +a);
+
+    // validate args
+    if (args.length !== 6) {
+      throw new Error("Failed to get args")
+    }
+
+    // TODO: decode script
+    const decoded = decodeSnap(...args as [string, any, string, number, number, string]);
+
+    // validate decoded
+    if (decoded === null) {
+      throw new Error("Failed to decode script")
+    }
+
+    return decoded
   } catch (error: any) {
     throw new Error(error);
   }

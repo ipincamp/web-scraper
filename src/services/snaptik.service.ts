@@ -1,55 +1,77 @@
 import axios from 'axios';
 import { load } from 'cheerio';
 import FormData from 'form-data';
-import SnapClass from '../classes/Snap.class';
-import requestStatus from '../utils/requestStatus';
 import globalVariables from '../utils/globalVariables';
+import decodeSnap from '../utils/decodeSnap';
+import snaptikParserService from './snaptikParser.service';
+import { type SnaptikJson } from '../interfaces/snaptik.type';
 
-export default async (inputUrl: string): Promise<string> => {
+export default async (inputUrl: string): Promise<SnaptikJson> => {
   try {
-    // request token
-    const requestToken = await axios({
-      method: 'GET',
-      url: 'https://snaptik.app/ID',
-      headers: {
-        "User-Agent": globalVariables.userAgent
-      }
+    // TODO: get token
+    const requestToken = await axios.get('https://snaptik.app/ID', {
+      headers: { "User-Agent": globalVariables.userAgent }
     });
 
-    const isRequestTokenSuccess = requestStatus(requestToken);
-    if (!isRequestTokenSuccess) {
-      throw new Error('Failed to get tokens');
+    // validate response
+    if (requestToken.status !== 200) {
+      throw new Error("Failed to get token")
     }
 
     // collect input data
     const $ = load(requestToken.data);
-    const data = new FormData();
+    const formData = new FormData();
 
+    // get value from input
     $('form input').map((_, { attribs }) => {
       const { name, value } = attribs;
-      data.append(name, name === 'url' ? inputUrl : value);
+      formData.append(name, name === 'url' ? inputUrl : value);
     });
 
-    // request script
-    const requestScript = await axios({
-      method: 'POST',
-      url: 'https://snaptik.app/abc2.php',
-      data,
-      headers: {
-        'Content-Type': `multipart/form-data; boundary=${data.getBoundary()}`,
-        Origin: 'https://snaptik.app',
-        Referer: 'https://snaptik.app/ID',
-        'User-Agent': globalVariables.userAgent
-      },
-    });
-
-    const isRequestScriptSuccess = requestStatus(requestScript);
-    if (!isRequestScriptSuccess) {
-      throw new Error('Failed to get the script');
+    // set headers
+    const headers = {
+      'Content-Type': `multipart/form-data; boundary=${formData.getBoundary()}`,
+      Origin: 'https://snaptik.app',
+      Referer: 'https://snaptik.app/ID',
+      'User-Agent': globalVariables.userAgent
     }
 
-    // decode script
-    return SnapClass.decode(requestScript.data as string);
+    // TODO: get script
+    const requestInfo = await axios.post("https://snaptik.app/abc2.php", formData, { headers })
+
+    // validate response
+    if (requestInfo.status !== 200) {
+      throw new Error("Failed to get video info")
+    }
+
+    // TODO: get params
+    const params = `${requestInfo.data}`.match(/escape\(r\)\)}\((.*?)\)\)/)
+
+    // validate params
+    if (params === null) {
+      throw new Error("Failed to get video params")
+    }
+
+    // split params
+    const args = params[1]
+      .split(',')
+      .map(a => a.startsWith('"') && a.endsWith('"') ? a.slice(1, -1) : +a);
+
+    // validate args
+    if (args.length !== 6) {
+      throw new Error("Failed to get args")
+    }
+
+    // TODO: decode script
+    const decoded = decodeSnap(...args as [string, any, string, number, number, string]);
+
+    // validate decoded
+    if (decoded === null) {
+      throw new Error("Failed to decode script")
+    }
+
+    // parse to json
+    return snaptikParserService(decoded.split("innerHTML = \"")[1].split("\"; ")[0].replace(/\\/g, ""));
   } catch (error: any) {
     throw new Error(error);
   }

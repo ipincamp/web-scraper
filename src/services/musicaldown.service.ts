@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { load } from 'cheerio';
 import FormData from 'form-data';
-import requestStatus from '../utils/requestStatus';
 import globalVariables from '../utils/globalVariables';
 import type IMusicaldownScrape from '../interfaces/musicaldown.type';
 
@@ -24,8 +23,7 @@ export default async (
       },
     });
 
-    const isInputCookieSuccess = requestStatus(inputCookie);
-    if (!isInputCookieSuccess) {
+    if (inputCookie.status !== 200) {
       throw new Error('Failed to get inputs or cookie');
     }
 
@@ -55,8 +53,7 @@ export default async (
       },
     });
 
-    const isRequestVideoSuccess = requestStatus(requestVideo);
-    if (!isRequestVideoSuccess) {
+    if (requestVideo.status !== 200) {
       throw new Error('Failed to get video');
     }
 
@@ -76,8 +73,7 @@ export default async (
         },
       });
 
-      const isRequestAudioSuccess = requestStatus(requestVideo);
-      if (!isRequestAudioSuccess) {
+      if (requestAudio.status !== 200) {
         throw new Error('Failed to get audio');
       }
 

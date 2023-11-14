@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { load } from 'cheerio';
 import FormData from 'form-data';
-import requestStatus from '../utils/requestStatus';
 import globalVariables from '../utils/globalVariables';
 import type ISnaptwitterScrape from '../interfaces/snaptwitter.type';
 
@@ -16,9 +15,8 @@ export default async (inputUrl: string): Promise<ISnaptwitterScrape> => {
       },
     });
 
-    const isRequestTokenSuccess = requestStatus(requestToken);
-    if (!isRequestTokenSuccess) {
-      throw new Error('Failed to get tokens');
+    if (requestToken.status !== 200) {
+      throw new Error("Failed to get tokens")
     }
 
     // collect input data
@@ -43,9 +41,8 @@ export default async (inputUrl: string): Promise<ISnaptwitterScrape> => {
       },
     });
 
-    const isRequestResultSuccess = requestStatus(requestResult);
-    if (!isRequestResultSuccess) {
-      throw new Error('Failed to get the result');
+    if (requestResult.status !== 200) {
+      throw new Error("Failed to get the result")
     }
 
     return requestResult.data as ISnaptwitterScrape;

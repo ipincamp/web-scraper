@@ -1,5 +1,4 @@
 import axios from "axios";
-import requestStatus from "../utils/requestStatus";
 import globalVariables from "../utils/globalVariables";
 import {
   type IY2mateConvertJson,
@@ -30,9 +29,8 @@ export const y2mate_api = async (url: string): Promise<IY2mateApiResponse> => {
       },
     });
 
-    const isRequestJsonDataSuccess = requestStatus(requestJsonData);
-    if (!isRequestJsonDataSuccess) {
-      throw new Error("Failed to get data");
+    if (requestJsonData.status !== 200) {
+      throw new Error("Failed to get data")
     }
 
     // TODO: validate if error occured
@@ -103,9 +101,8 @@ export const y2mate_convert = async (
       },
     });
 
-    const isRequestJsonDataSuccess = requestStatus(requestJsonData);
-    if (!isRequestJsonDataSuccess) {
-      throw new Error("Failed to get data");
+    if (requestJsonData.status !== 200) {
+      throw new Error("Failed to get data")
     }
 
     const jsonData = requestJsonData.data as IY2mateConvertJson;

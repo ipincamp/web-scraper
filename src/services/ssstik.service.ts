@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { load } from 'cheerio';
 import FormData from 'form-data';
-import requestStatus from '../utils/requestStatus';
 import globalVariables from '../utils/globalVariables';
 
 export default async (inputUrl: string): Promise<string> => {
@@ -15,9 +14,8 @@ export default async (inputUrl: string): Promise<string> => {
       },
     });
 
-    const isRequestTokenSuccess = requestStatus(requestToken);
-    if (!isRequestTokenSuccess) {
-      throw new Error('Failed to get tokens');
+    if (requestToken.status !== 200) {
+      throw new Error("Failed to get tokens")
     }
 
     // collect input & token
@@ -47,9 +45,8 @@ export default async (inputUrl: string): Promise<string> => {
       },
     });
 
-    const isRequestResultSuccess = requestStatus(requestResult);
-    if (!isRequestResultSuccess) {
-      throw new Error('Failed to get the result');
+    if (requestResult.status !== 200) {
+      throw new Error("Failed to get the result")
     }
 
     return requestResult.data as string

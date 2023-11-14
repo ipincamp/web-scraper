@@ -1,6 +1,5 @@
 import axios from "axios";
 import globalVariables from "../utils/globalVariables";
-import requestStatus from "../utils/requestStatus";
 import type ISaveIgJson from "../interfaces/saveig.type";
 
 export default async (inputUrl: string): Promise<string> => {
@@ -22,9 +21,8 @@ export default async (inputUrl: string): Promise<string> => {
       },
     });
 
-    const isRequestJsonSuccess = requestStatus(requestJson);
-    if (!isRequestJsonSuccess) {
-      throw new Error("Failed to get json data");
+    if (requestJson.status !== 200) {
+      throw new Error('Failed to get json data');
     }
 
     // parse data
