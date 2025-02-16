@@ -13,4 +13,7 @@ import { TikTok } from "./src";
 
     const ssstik = await tiktok.ssstik();
     console.info(ssstik);
+
+    const musicallydown = await tiktok.musicallydown();
+    console.info(musicallydown);
 })();
