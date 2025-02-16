@@ -1,7 +1,7 @@
 {
   "name": "@ipincamp/web-scraper",
-  "version": "1.0.15",
-  "description": "Simple and lightweight web scraper. Works well in 2023!",
+  "version": "2.0.0",
+  "description": "Simple and lightweight web scraper. Works well in 2025!",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -21,8 +21,8 @@
     }
   },
   "engines": {
-    "node": ">=18.18.2",
-    "npm": ">=9.8.1"
+    "node": ">=22.13.1",
+    "npm": ">=10.9.2"
   },
   "repository": {
     "type": "git",
@@ -40,13 +40,13 @@
   },
   "homepage": "https://github.com/ipincamp/web-scraper#readme",
   "dependencies": {
-    "axios": "^1.6.1",
-    "cheerio": "^1.0.0-rc.12",
-    "form-data": "^4.0.0"
+    "axios": "^1.7.9",
+    "cheerio": "^1.0.0",
+    "form-data": "^4.0.2"
   },
   "devDependencies": {
-    "@types/node": "^20.9.0",
-    "tsup": "^7.2.0",
-    "typescript": "^5.2.2"
+    "@types/node": "^22.13.4",
+    "tsup": "^8.3.6",
+    "typescript": "^5.7.3"
   }
 }
