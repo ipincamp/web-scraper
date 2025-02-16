@@ -6,6 +6,7 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "scripts": {
+    "test": "ts-node ./example.ts",
     "build": "tsup ./src/index.ts",
     "prepublishOnly": "npm run build"
   },
@@ -46,6 +47,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.13.4",
+    "ts-node": "^10.9.2",
     "tsup": "^8.3.6",
     "typescript": "^5.7.3"
   }
